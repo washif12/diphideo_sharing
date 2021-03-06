@@ -1,0 +1,13 @@
+<div *ngIf="isConnecting | async" class="overlay">
+    <span class="text" style="color: aliceblue;">Connecting..</span>
+<mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value">
+    
+</mat-progress-spinner>
+</div>
+
+<div *ngIf="isLoading | async" class="overlay">
+        <span class="text" style="color: aliceblue;">Loading..</span>
+    <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value">
+        
+    </mat-progress-spinner>
+</div>

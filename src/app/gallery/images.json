@@ -1,0 +1,39 @@
+    [
+        {
+            "preview_xxs": {
+            "path": "../../assets/images/image001.jpg",
+            "width": 500,
+            "height": 375
+            },
+            "preview_xs": {
+            "path": "../../assets/images/image001.jpg",
+            "width": 1024,
+            "height": 768
+            },
+            "preview_s": {
+            "path": "../../assets/images/image001.jpg",
+            "width": 1440,
+            "height": 1080
+            },
+            "preview_m": {
+            "path": "../../assets/images/image001.jpg",
+            "width": 2133,
+            "height": 1600
+            },
+            "preview_l": {
+            "path": "../../assets/images/image001.jpg",
+            "width": 2880,
+            "height": 2160
+            },
+            "preview_xl": {
+            "path": "../../assets/images/image001.jpg",
+            "width": 3840,
+            "height": 2880
+            },
+            "raw": {
+            "path": "../../assets/images/image001.jpg",
+            "width": 1400,
+            "height": 1050
+            }
+        }
+    ]

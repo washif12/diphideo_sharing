@@ -1,0 +1,131 @@
+
+
+<section class="portfolio" id="portfolio">
+    <div class="container-fluid">
+        <div class="row supreme-container">
+
+            <div #imageId *ngFor="let source of gallery" [attr.image-id]="source.id" class="gallery_product col-sm-3 col-xs-6 filter category1">
+                <a (click)='logImageId(imageId)' data-toggle="modal" data-target="#exampleModalCenter" href="#">
+                    <img class="img-fluid gallery-img" alt="" [src]="source.thumbLink" onError="this.src='../../assets/images/error.png'"/>
+                    <div class='img-info'>
+                        <h4>{{source.title}}</h4>
+                        <p>{{source.description}}</p>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="exampleModalCenter" data-backdrop="static" role="dialog" 
+aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content main-modal-content">
+        <div class="modal-header main-modal-header">
+          <h6 class="modal-title" id="exampleModalLongTitle">{{modalTitle}}</h6>
+          <button type="button" (click)='clearLink()' class="close" data-dismiss="modal" aria-label="Close" style="outline: none!important;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div *ngIf="modalVideoLink" class="modal-body embed-responsive">
+          <!--<video class="embed-responsive-item source-video embed-responsive embed-responsive-16by9" controls>
+            <source [src]="modalVideoLink" type="video/mp4">
+          </video>-->
+          <!--
+            <iframe class="embed-responsive-item" [src]="modalVideoLink" 
+                frameborder="0" allowfullscreen>
+            </iframe>
+            -->
+            <vg-player class="embed-responsive-item">
+              <div class="icon-bar">
+                  <a [href]="fbShareLink" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a> 
+                  <a [href]="twitterShareLink" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a> 
+                  <!--<a [href]="googleShareLink" class="google" target="_blank"><i class="fa fa-google"></i></a>--> 
+                  <a [href]="linkedShareLink" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a>
+                 <!--<a [href]="tubeShareLink" class="youtube" target="_blank"><i class="fa fa-youtube"></i></a>--> 
+              </div>     
+              <video *ngIf="!isGif" class="source-video" [vgMedia]="media" #media id="singleVideo" controls>
+                  <source [src]="modalVideoLink" type="video/mp4">
+              </video>
+              <video *ngIf="isGif" class="source-video" [poster]="modalVideoLink" [vgMedia]="media" #media id="singleVideo" controls>
+                
+              </video>
+            </vg-player>
+        </div>
+        <div class="modal-footer main-modal-footer">
+          <div class="row" style="width: 100%;text-align: center;">
+              <div class="row">
+                <div class="thumb col-sm-4 col-4">
+                    <img class="img-fluid footer-thumb" [src]="printImage_1">
+                </div>
+                <div class="thumb col-sm-4 col-4">
+                    <img class="img-fluid footer-thumb" [src]="printImage_2">
+                </div>
+                <div class="thumb col-sm-4 col-4">
+                    <img class="img-fluid footer-thumb" [src]="printImage_3">
+                </div>
+              </div><br>
+              <div class="row" style="width: 100%; padding-top: 15px;">
+                <div class="col-sm-4 col-4 button-left">
+                  <a [href]='modalVideoLink' target="_blank">
+                    <button type="button" class="btn btn-dark">Download</button>
+                  </a>
+                </div>
+                <div class="button-right col-sm-8 col-8">
+                  <button (click)='onPrint($event)' type="submit" [id]='modalId' class="btn btn-dark">Print</button>&nbsp;
+                  <button type="button" class="btn btn-dark" data-toggle="modal" data-target=".bs-example-modal-sm">Send Email</button>
+                </div>
+              </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" >
+        <div class="modal-header modal-header-mail">
+          <h5 class="modal-title">Send Email</h5>
+          <button style="padding-right: 10px;" type="button" (click)='closeKb()' class="close" data-dismiss="modal" aria-label="Close" style="outline: none!important;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body modal-body-mail">
+            <div class="contact_form">
+              <div class="row">
+                
+                
+                <div [formGroup]="login_form" class="col-sm-9 col-9" style="padding-left: 10px;padding-right: 10px;">    
+                  <input type="email" name="email" #emailAdd 
+                  class="form-control email-input input" [class.email-valid]="login_form.valid ||keyboardValueValidation"
+                  (input)="onInputChange($event)" value={{value}}
+                  (focus)='openKb()'
+                  formControlName="email" placeholder="Type Your Email" style="outline: none!important;">
+                  
+                  
+                  <!--
+                  <span class="text-danger validation-msg" *ngIf="login_form.controls['email'].hasError('required') && (login_form.controls['email'].dirty || login_form.controls['email'].touched)">This field is required</span>
+                  <span class="text-danger validation-msg" *ngIf="login_form.controls['email'].hasError('pattern') && (login_form.controls['email'].dirty || login_form.controls['email'].touched)">Please enter valid email address</span>
+                  -->
+                </div>
+                <div class="col-sm-3 col-3">
+                  <button type="button" (click)='onSubmit(emailAdd.value,$event);closeKb();' [id]='modalId' [disabled]='!keyboardValueValidation && !login_form.valid' class="btn btn-success btn-sm btn-email" data-dismiss="modal"><i class="far fa-paper-plane"></i>&nbsp;Send</button> 
+                </div>
+                
+                
+              </div>
+              
+              </div>
+        </div><!--
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>-->
+
+      <div class="simple-keyboard" [class.show-kb]='keyboardValue'></div>
+    </div>
+  </div>
+</div>

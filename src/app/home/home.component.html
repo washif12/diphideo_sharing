@@ -1,0 +1,94 @@
+<div class="form-body">
+    <!--<div class="website-logo">
+        <a href="index.html">
+            <div class="logo">
+                <img class="logo-size" src="images/logo-light.svg" alt="">
+            </div>
+        </a>
+    </div>-->
+    <div class="row">
+        <div class="img-holder">
+            <div class="bg"></div>
+            <div class="info-holder">
+
+            </div>
+        </div>
+        <div class="form-holder">
+            <div class="form-content">
+                <div class="form-items">
+                    <h3>Web Diphideo Sharing Station</h3><br>
+                    <p *ngIf="isError">Sorry, You are not authorized.</p>
+                    <!--<div class="page-links">
+                        <a href="index1.php" class="active">Login</a><a href="register.php">Register</a>
+                    </div>-->
+                    <form class="contact_form_box" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate="novalidate"
+                    autocomplete="off">
+                        <div>
+                            <input class="form-control" type="" formControlName="email" placeholder="E-mail Address" required>
+                            <div *ngIf="formControls['email'].touched && formControls['email'].errors" class="text-danger input-group">
+                                <div *ngIf="formControls['email'].errors.required">Email is required</div>
+                                <div *ngIf="formControls['email'].errors.email">Must be a valid email address</div>
+                            </div>
+                        </div>
+                        <div>
+                            <input class="form-control" type="password" formControlName="password" placeholder="Password" required>
+                            <div *ngIf="formControls['password'].touched && formControls['password'].errors" class="text-danger input-group">
+                                <div *ngIf="formControls['password'].errors.required">Company name is required</div>
+                            </div>
+                        </div>
+                        <div class="form-button">
+                            <button type="submit" class="btn btn-success" [disabled]='!form.valid'>Login</button> <!--<a href="index1.php">Forget password?</a>-->
+                        </div>
+                    </form>
+                    <!--
+                    <div class="other-links">
+                        <span>Or login with</span><a href="#">Facebook</a><a href="#">Google</a><a href="#">Linkedin</a>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--
+<div class="container">
+    <div class="button-container">
+        <div class="row">
+            <div class="col button-col">
+                <div class="justify-content-center d-flex align-items-center flex-column">
+                    <div class="p-2 button-left">
+                        <a target="" [routerLink]="['/gallery']" routerLinkActive="router-link-active" ><button type="button" class="btn btn-secondary btn-lg"><i class="fas fa-images"></i>  GALLERY</button></a>
+                    </div>
+                    <div class="p-2 button-left">
+                        <a target="" [routerLink]="['/settings']" routerLinkActive="router-link-active" ><button type="button" class="btn btn-secondary btn-lg"><i class="fas fa-cogs"></i>  SETTINGS</button></a>
+                    </div>
+                    <div class="p-2 button-left">
+                        <a target="" [routerLink]="['/liveview']" routerLinkActive="router-link-active" ><button type="button" class="btn btn-secondary btn-lg"><i class="fas fa-desktop"></i>  LIVEVIEW</button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col button-col">
+                <div class="justify-content-center d-flex align-items-center flex-column">
+                    <div class="p-2 button-right">
+                        <a target="" [routerLink]="['/printer']" routerLinkActive="router-link-active" ><button type="button" class="btn btn-secondary btn-lg"><i class="fas fa-print"></i>  PRINTER</button></a>
+                    </div>
+                    <div class="p-2 button-right">
+                        <a target="" [routerLink]="['/overlay']" routerLinkActive="router-link-active" ><button type="button" class="btn btn-secondary btn-lg"><i class="far fa-clone"></i>  OVERLAY</button></a>
+                    </div>
+                    <div class="p-2 button-right">
+                        <a target="" [routerLink]="['/status']" routerLinkActive="router-link-active" ><button type="button" class="btn btn-secondary btn-lg"><i class="fas fa-chart-bar"></i>  STATUS</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="button" class="btn-grp">
+        <button type="button" class="button btn btn-default btn-lg" onclick="launchIntoFullscreen();"><span style="top: 5px;"  class="glyphicon glyphicon-camera"></span> Gallery</button>
+
+        <div class="divider"></div>
+
+        <button type="button" class="settings btn btn-default btn-lg"><span style="top: 5px;" class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings</button>
+    </div>
+
+</div>
+-->
